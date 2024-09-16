@@ -1,14 +1,16 @@
-using mangas.Controllers.V1;
-using mangas.Services.Feature.Mangas;
+using mangas.Controllers.V1;using mangas.Infrastructure.Repositories;
+using mangas.Services.Freatures.manga;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSingleton<MangaService>();
-builder.Services.AddSingleton<MangaController>();
+builder.Services.AddScoped<MangaService>();
 
-
+builder.Services.AddScoped<MangaService>();
+builder.Services.AddTransient<MangaRepository>();
 builder.Services.AddControllers();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
