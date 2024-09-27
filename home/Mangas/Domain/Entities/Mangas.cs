@@ -1,6 +1,6 @@
 using System.Data;
 
-namespace mangas.Domain.Entities;
+namespace Mangas.Domain.Entities;
 
 public class Manga
 {

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using mangas.Services.Freatures.manga;
-using mangas.Domain.Entities;
+using Mangas.Domain.Entities;
+using Mangas.Domain.Entities.Dtos;
+using AutoMapper;
 
 namespace mangas.Controllers.V1
 {
@@ -14,32 +16,52 @@ namespace mangas.Controllers.V1
     {
         private readonly MangaService _mangaService;
 
-        public MangaController(MangaService mangaService)
+        private readonly IMapper _mapper;
+
+        public MangaController(MangaService mangaService, IMapper mapper)
         {
             this._mangaService = mangaService;
+            this._mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_mangaService.GetAll());
+            var mangas = _mangaService.GetAll();
+            var MangaDTO = _mapper.Map<IEnumerable<MangaDTO>>(mangas);
+            /*return Ok(_mangaService.GetAll());*/
+
+            return Ok(MangaDTO);
         }
 
         [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
             var manga = _mangaService.GetById(id);
+
             if (manga == null)
                 return NotFound();
 
-            return Ok(manga);
+                var dto = _mapper.Map<MangaDTO>(manga);
+
+            return Ok(dto);
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] Manga manga)
         {
-            _mangaService.Add(manga);
-            return CreatedAtAction(nameof(GetById), new { id = manga.Id }, manga);
+            var entity = _mapper.Map<Manga>(manga);
+
+            var mangas = _mangaService.GetAll();
+            var mangaId = mangas.Count() + 1;
+
+            entity.Id = mangaId;
+            _mangaService.Add(entity);
+
+            var dto = _mapper.Map<MangaDTO>(entity);
+            return CreatedAtAction(nameof(GetById), new { id = entity.Id },dto);
+            /*_mangaService.Add(manga);
+            return CreatedAtAction(nameof(GetById), new { id = manga.Id }, manga);*/
         }
 
         [HttpPut("{id}")]

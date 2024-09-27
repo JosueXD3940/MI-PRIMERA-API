@@ -1,4 +1,4 @@
-using mangas.Domain.Entities;
+using Mangas.Domain.Entities;
 using mangas.Infrastructure.Repositories;
 
 namespace mangas.Services.Freatures.manga;

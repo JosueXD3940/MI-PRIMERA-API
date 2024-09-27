@@ -1,5 +1,5 @@
 using System.Text.Json;
-using mangas.Domain.Entities;
+using Mangas.Domain.Entities;
 
 namespace mangas.Infrastructure.Repositories;
 

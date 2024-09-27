@@ -32,3 +32,5 @@ C:\Users\sanch\Documents\ESCUELA\APLICACIONWEB\home\Mangas\obj\Debug\net7.0\Mang
 C:\Users\sanch\Documents\ESCUELA\APLICACIONWEB\home\Mangas\obj\Debug\net7.0\Mangas.genruntimeconfig.cache
 C:\Users\sanch\Documents\ESCUELA\APLICACIONWEB\home\Mangas\obj\Debug\net7.0\ref\Mangas.dll
 C:\Users\sanch\Documents\ESCUELA\APLICACIONWEB\home\Mangas\bin\Debug\net7.0\Infraestructure\Data\javerages.library.data.json
+C:\Users\sanch\Documents\ESCUELA\APLICACIONWEB\home\Mangas\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\sanch\Documents\ESCUELA\APLICACIONWEB\home\Mangas\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
